@@ -1,8 +1,9 @@
 'use strict';
 
-// put your own value below!
-const apiKey = 'j7uhULHMZ9gWtqE1sbVRaOxhhe4jvPKfVFapIc5W'; 
-const searchURL = 'https://api.nps.gov/api/v1/parks';
+const EDAMAM_SEARCH_URL = 'https://api.edamam.com/search';
+
+const AMAZON_API_KEY = '';
+const AMAZON_SEARCH_URL = '';
 
 
 function formatQueryParams(params) {
@@ -12,32 +13,32 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
-	// if there are previous results, remove them
 	console.log(responseJson);
 	$('#results-list').empty();
-	// iterate through the items array
-	for (let i = 0; i < responseJson.data.length; i++){
-		// for each video object in the items 
-		//array, add a list item to the results 
-		//list with the video title, description,
-		//and thumbnail
+	console.log('emptying list');
+	for (let i = 0; i < responseJson.hits.length; i++){
+		console.log('for loop working');
 		$('#results-list').append(
-			`<li><h3><a href="${responseJson.data[i].url}">${responseJson.data[i].fullName}</a></h3>
-			<p>${responseJson.data[i].description}</p>
+			`<li><h3><a href="${responseJson.hits[i].recipe.url}">${responseJson.hits[i].recipe.label}</a></h3>
+			<img src="${responseJson.hits[i].recipe.image}">
 			</li>`
-		)};
-	//display the results section  
+		);
+		console.log('appending stuff');
+	};
+
 	$('#results').removeClass('hidden');
+	console.log('showing stuff');
 };
 
-function getParks(query, limit=10) {
+function getRecipes(query, limit=10) {
 	const params = {
-		'api_key': apiKey,
-		'stateCode': query,
-		limit,
+		'q': query,
+		'app_id': EDAMAM_APP_ID,
+		'app_key': EDAMAM_API_KEY,
+		'to': limit
 	};
 	const queryString = formatQueryParams(params)
-	const url = searchURL + '?' + queryString;
+	const url = EDAMAM_SEARCH_URL + '?' + queryString;
 
 	console.log(url);
 
@@ -59,9 +60,10 @@ function watchForm() {
 		event.preventDefault();
 		const searchTerm = $('#js-search-term').val();
 		const limit = $('#js-max-results').val();
-		getParks(searchTerm, limit);
+		getRecipes(searchTerm, limit);
 	});
 }
 
 $(watchForm);
+console.log('app loaded');
 
