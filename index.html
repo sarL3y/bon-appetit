@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NPS Park Search</title>
+    <title>Recipe Search</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>NPS Park Search</h1>
+        <h1>Recipe Search</h1>
 
         <form id="js-form">
-            <label for="search-term">Search term</label>
+            <label for="search-term">Ingredient</label>
             <input type="text" name="search-term" id="js-search-term" required>
 
             <label for="max-results">Maximum results to return</label>
@@ -23,6 +23,7 @@
         </form>
 
         <p id="js-error-message" class="error-message"></p>
+        
         <section id="results" class="hidden">
           <h2>Search results</h2>
           <ul id="results-list">
