@@ -2,9 +2,8 @@
 
 const EDAMAM_SEARCH_URL = 'https://api.edamam.com/search';
 
-const AMAZON_API_KEY = '';
-const AMAZON_SEARCH_URL = '';
-
+// const AMAZON_API_KEY = '';
+// const AMAZON_SEARCH_URL = '';
 
 function formatQueryParams(params) {
 	const queryItems = Object.keys(params)
@@ -13,11 +12,36 @@ function formatQueryParams(params) {
 	return queryItems.join('&');
 }
 
+function getRecipes(query, limit=10) {
+	const params = {
+		'q': query,
+		'app_id': EDAMAM_APP_ID,
+		'app_key': EDAMAM_API_KEY,
+		'to': limit
+	};
+
+	const queryString = formatQueryParams(params)
+	const url = EDAMAM_SEARCH_URL + '?' + queryString;
+
+	console.log(url);
+
+	fetch(url)
+		.then(response => {
+			if (response.ok) {
+			return response.json();
+			}
+			throw new Error(response.statusText);
+		})
+		.then(responseJson => displayResults(responseJson))
+		.catch(err => {
+			$('#js-error-message').text(`Something went wrong: ${err.message}`);
+		});
+}
+
 function displayResults(responseJson) {
 	console.log(responseJson);
 
 	$('#results-list').empty();
-
 	console.log('emptying list');
 
 	// FOR LOOP METHOD //
@@ -33,6 +57,7 @@ function displayResults(responseJson) {
 					<section id="ingredients" class="hidden ">
 						<h4>Ingredients</h4>
 						<ul id="ingredients-list" class="ingredients-list">
+						
 						</ul>
 					</section>	
 				</div>
@@ -48,7 +73,6 @@ function displayResults(responseJson) {
 			</li>`
 		);
 		// };
-
 	}; 
 
 	// FOREACH METHOD //
@@ -87,38 +111,12 @@ function displayResults(responseJson) {
 				</div>
 			</li>`
 		);		
-	}); */
+	}); 
+	*/
 
 	$('#results').removeClass('hidden');
-
 	console.log('showing stuff');
 };
-
-function getRecipes(query, limit=10) {
-	const params = {
-		'q': query,
-		'app_id': EDAMAM_APP_ID,
-		'app_key': EDAMAM_API_KEY,
-		'to': limit
-	};
-
-	const queryString = formatQueryParams(params)
-	const url = EDAMAM_SEARCH_URL + '?' + queryString;
-
-	console.log(url);
-
-	fetch(url)
-		.then(response => {
-			if (response.ok) {
-			return response.json();
-			}
-			throw new Error(response.statusText);
-		})
-		.then(responseJson => displayResults(responseJson))
-		.catch(err => {
-			$('#js-error-message').text(`Something went wrong: ${err.message}`);
-		});
-}
 
 function watchSearchForm() {
 	$('form').submit(event => {
@@ -136,10 +134,6 @@ function watchShowIngredientsButton() {
 	});
 	
 }
-
-
-
-
 
 $(watchShowIngredientsButton);
 $(watchSearchForm);
