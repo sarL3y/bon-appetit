@@ -9,24 +9,88 @@ const AMAZON_SEARCH_URL = '';
 function formatQueryParams(params) {
 	const queryItems = Object.keys(params)
 	.map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+
 	return queryItems.join('&');
 }
 
 function displayResults(responseJson) {
 	console.log(responseJson);
+
 	$('#results-list').empty();
+
 	console.log('emptying list');
-	for (let i = 0; i < responseJson.hits.length; i++){
-		console.log('for loop working');
+
+	// FOR LOOP METHOD //
+	for (let i = 0, j = 0; i < responseJson.hits.length && j < responseJson.hits[i].recipe.ingredientLines.length; i++, j++) {
 		$('#results-list').append(
-			`<li><h3><a href="${responseJson.hits[i].recipe.url}">${responseJson.hits[i].recipe.label}</a></h3>
-			<img src="${responseJson.hits[i].recipe.image}">
+			`<li>
+				<div class="search-result">
+					<img src="${responseJson.hits[i].recipe.image}">
+					<h3><a href="${responseJson.hits[i].recipe.url}">${responseJson.hits[i].recipe.label}</a></h3>
+
+					<button type="button" id="show-ingredients" class="show-ingredients">Show More</button>
+
+					<section id="ingredients" class="hidden ">
+						<h4>Ingredients</h4>
+						<ul id="ingredients-list" class="ingredients-list">
+						</ul>
+					</section>	
+				</div>
 			</li>`
 		);
-		console.log('appending stuff');
-	};
+
+		// for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
+		$('#results-list').find('#ingredients-list').append(
+			`<li>
+				<div class="items">
+					<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
+				</div>
+			</li>`
+		);
+		// };
+
+	}; 
+
+	// FOREACH METHOD //
+	/* responseJson.hits.forEach(key => {
+		const recipe = key.recipe;
+		const image = key.recipe.image;
+		const url = key.recipe.url;
+		const label = key.recipe.label;
+		const ingredient = key.recipe.ingredientLines.map(key => {
+			return key;
+		});
+		console.log(ingredient);
+		
+		$('#results-list').append(
+			`<li>
+				<div class="search-result">
+					<img src="${image}">
+					<h3><a href="${url}">${label}</a></h3>
+
+					<button type="button" id="show-ingredients" class="show-ingredients">Show More</button>
+
+					<section id="ingredients" class="hidden ">
+						<h4>Ingredients</h4>
+						<ul id="ingredients-list" class="ingredients-list">
+						
+						</ul>
+					</section>	
+				</div>
+			</li>`
+		);
+
+		$('#results-list').find('#ingredients-list').append(
+			`<li>
+				<div class="items">
+					<p class="item">${ingredient}</p>
+				</div>
+			</li>`
+		);		
+	}); */
 
 	$('#results').removeClass('hidden');
+
 	console.log('showing stuff');
 };
 
@@ -37,6 +101,7 @@ function getRecipes(query, limit=10) {
 		'app_key': EDAMAM_API_KEY,
 		'to': limit
 	};
+
 	const queryString = formatQueryParams(params)
 	const url = EDAMAM_SEARCH_URL + '?' + queryString;
 
@@ -55,7 +120,7 @@ function getRecipes(query, limit=10) {
 		});
 }
 
-function watchForm() {
+function watchSearchForm() {
 	$('form').submit(event => {
 		event.preventDefault();
 		const searchTerm = $('#js-search-term').val();
@@ -64,6 +129,19 @@ function watchForm() {
 	});
 }
 
-$(watchForm);
+function watchShowIngredientsButton() {
+	$('#results-list').on('click', '#show-ingredients', event => {
+		console.log('clicked + button');
+		$('#results-list').find('#ingredients').removeClass('hidden');
+	});
+	
+}
+
+
+
+
+
+$(watchShowIngredientsButton);
+$(watchSearchForm);
 console.log('app loaded');
 
