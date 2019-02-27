@@ -10,7 +10,15 @@ body {
 
 header {
 	text-align: center;
-	margin-top: 20vh;
+	margin-top: 10vh;
+}
+
+h1 {
+	margin: 2vh 2vw;
+}
+
+h2 {
+	margin: 2vh 2vw 5vh 2vw;
 }
 
 button, input[type="text"] {
@@ -26,13 +34,6 @@ ul {
 	margin: 0;
 	padding: 0;
 }
-
-h3 {
-	display: inline-block;
-	width: auto;
-}
-
-
 
 .container {
 	display: block;
@@ -64,7 +65,8 @@ label[for=search-term] {
 input[type=text] {
 
 	border: 1px solid #ECEFF1;
-	width: 50%;
+	width: 75%;
+	margin-top: 1vh;
 }
 
 label[for=max-results] {
@@ -83,7 +85,7 @@ input[type=submit] {
 	border: 1px solid #ECEFF1;
 	width: 150px;
 	height: 30px;
-	margin: 5vh auto 1vh auto;
+	margin: 3vh auto 1vh auto;
 }
 
 .error-message {
@@ -109,20 +111,36 @@ input[type=submit] {
 	overflow: auto;
 }
 
+.recipe-link {
+	
+	text-decoration: none;
+	margin: 10px 0px 0px 10px;
+}
+
+.recipe-source {
+	
+	margin: 5px 0px 0px 10px;
+}
+
 .recipe-img {
-	float:right;
-	margin: 0;
+	float: right;
 	max-width: 100px;
 	max-height: 100px;
 }
 
 .ingredients-list {
 	display: block;
-	border: 2px solid grey;
 }
 
+.expand-buttons {
+	margin: 25px 0px 5px 10px;
+}
 .show-ingredients {
-	display: block;
+	
+}
+
+.show-health-info {
+	
 }
 
 
