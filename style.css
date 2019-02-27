@@ -4,6 +4,13 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
+	background-color: #E1F5FE;
+	color: #01579B;
+}
+
+header {
+	text-align: center;
+	margin-top: 20vh;
 }
 
 button, input[type="text"] {
@@ -14,13 +21,69 @@ button:hover {
 	cursor: pointer;
 }
 
-img {
-	max-width: 120px;
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
+h3 {
+	display: inline-block;
+	width: auto;
+}
+
+
+
 .container {
+	display: block;
 	max-width: 600px;
 	margin: 0 auto;
+}
+
+.search-form {
+	display: block;
+	padding: 10px;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	text-align: center;
+}
+
+form > label {
+	margin: 2vh 1vw;
+}
+
+label > input {
+	margin-left: 5px;
+}
+
+label[for=search-term] {
+
+}
+
+input[type=text] {
+
+	border: 1px solid #ECEFF1;
+	width: 50%;
+}
+
+label[for=max-results] {
+	display: block;
+}
+
+input[type=number] {
+	
+}
+
+input[type=submit] {
+	display: block;
+	font-weight: bold;
+	color: white;
+	background-color: #01579B;
+	border: 1px solid #ECEFF1;
+	width: 150px;
+	height: 30px;
+	margin: 5vh auto 1vh auto;
 }
 
 .error-message {
@@ -30,4 +93,36 @@ img {
 .hidden {
 	display: none;
 }
+
+#results {
+	
+}
+
+.search-result {
+	display: block;
+	height: auto;
+	width: 100%;
+	margin-top: 2vh;
+	background-color: white;
+	border-radius: 2px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	overflow: auto;
+}
+
+.recipe-img {
+	float:right;
+	margin: 0;
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.ingredients-list {
+	display: block;
+	border: 2px solid grey;
+}
+
+.show-ingredients {
+	display: block;
+}
+
 

@@ -45,35 +45,43 @@ function displayResults(responseJson) {
 	console.log('emptying list');
 
 	// FOR LOOP METHOD //
-	for (let i = 0, j = 0; i < responseJson.hits.length && j < responseJson.hits[i].recipe.ingredientLines.length; i++, j++) {
+	for (let i = 0; i < responseJson.hits.length; i++) {
+		for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
+			$('#ingredients-list').append(
+			`<li>
+				<div class="items">
+					<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
+				</div>
+			</li>`
+			);
+		};
+
 		$('#results-list').append(
 			`<li>
-				<div class="search-result">
-					<img src="${responseJson.hits[i].recipe.image}">
+				<div id="search-result" class="search-result">
 					<h3><a href="${responseJson.hits[i].recipe.url}">${responseJson.hits[i].recipe.label}</a></h3>
+					<img src="${responseJson.hits[i].recipe.image}" class="recipe-img">
+					<button type="button" id="show-ingredients" class="show-ingredients">Show Ingredients</button>
 
-					<button type="button" id="show-ingredients" class="show-ingredients">Show More</button>
-
-					<section id="ingredients" class="hidden ">
+					<section id="ingredients" class="hidden">
 						<h4>Ingredients</h4>
 						<ul id="ingredients-list" class="ingredients-list">
-						
+
 						</ul>
 					</section>	
 				</div>
 			</li>`
 		);
-
-		// for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
+		/* for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
 		$('#results-list').find('#ingredients-list').append(
 			`<li>
 				<div class="items">
 					<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
 				</div>
 			</li>`
-		);
-		// };
-	}; 
+		);*/ 
+	};
+ 
 
 	// FOREACH METHOD //
 	/* responseJson.hits.forEach(key => {
@@ -130,7 +138,7 @@ function watchSearchForm() {
 function watchShowIngredientsButton() {
 	$('#results-list').on('click', '#show-ingredients', event => {
 		console.log('clicked + button');
-		$('#results-list').find('#ingredients').removeClass('hidden');
+		$(this).find('#ingredients').removeClass('hidden');
 	});
 	
 }
