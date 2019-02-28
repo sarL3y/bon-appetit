@@ -12,7 +12,7 @@
 <body>
 
 	<header role="header">
-		<h1>Bon Appetit</h1>
+		<h1>bon appetit!</h1>
 		<h2>What's in your cupboard?</h2>
 	</header>
 
@@ -24,7 +24,8 @@
 		</div>
 
 		<form id="js-form" class="search-form">
-			<label for="search-term"><input type="text" name="search-term" id="js-search-term" placeholder="Ingredients" required></label>
+			<label for="search-term" class="label-hidden">Search Ingredients:</label>
+			<input type="text" name="search-term" id="js-search-term" placeholder="Ingredients" required>
 			<!-- <label for="max-results">Max Results<input type="number" name="max-results" id="js-max-results" value="5"></label> -->
 			<input type="submit" value="Search">
 		</form>
@@ -32,7 +33,7 @@
 		<p id="js-error-message" class="error-message"></p>
 
 		<section id="results" class="hidden">
-			<h2>Recipes</h2>
+			<h3>Recipes</h3>
 			<ul id="results-list">
 
 			</ul>

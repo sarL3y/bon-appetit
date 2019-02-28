@@ -15,10 +15,12 @@ header {
 
 h1 {
 	margin: 2vh 2vw;
+	font-size: 2em;
 }
 
 h2 {
 	margin: 2vh 2vw 5vh 2vw;
+	font-size: 1em;
 }
 
 button, input[type="text"] {
@@ -37,7 +39,8 @@ ul {
 
 .container {
 	display: block;
-	max-width: 600px;
+	max-width: 500px;
+	min-width: 300px;
 	margin: 0 auto;
 }
 
@@ -65,8 +68,24 @@ label[for=search-term] {
 input[type=text] {
 
 	border: 1px solid #ECEFF1;
+	border-radius: 2px;
 	width: 75%;
 	margin-top: 1vh;
+	font-size: 1.2em;
+}
+
+input[type=text], textarea {
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	border: 1px solid #DDDDDD;
+}
+
+input[type=text]:focus, textarea:focus {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	border: 1px solid #afc2cb;
 }
 
 label[for=max-results] {
@@ -82,7 +101,7 @@ input[type=submit] {
 	font-weight: bold;
 	color: white;
 	background-color: #01579B;
-	border: 1px solid #ECEFF1;
+	border-radius: 5px;
 	width: 150px;
 	height: 30px;
 	margin: 3vh auto 1vh auto;
@@ -96,36 +115,97 @@ input[type=submit] {
 	display: none;
 }
 
+.label-hidden {
+	display: none;
+}
+
 #results {
 	
 }
 
+h3 {
+	text-align: center;
+	margin: 3vh 0 1vh 0;
+	font-size: 1.2em;
+}
+
 .search-result {
 	display: block;
+	position: relative;
 	height: auto;
 	width: 100%;
 	margin-top: 2vh;
 	background-color: white;
-	border-radius: 2px;
+	border-radius: 5px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-	overflow: auto;
+	overflow: hidden;
+
 }
 
-.recipe-link {
+.search-result > a {
 	
 	text-decoration: none;
-	margin: 10px 0px 0px 10px;
+}
+
+.recipe-label-a {
+	display: block;
+	padding: 10px 0 0 10px;
+}
+
+.recipe-label {
+	font-size: 1.2em;
+	margin: 0;
+
+}
+
+.recipe-label-a > .recipe-label {
+	max-width: 80%;
 }
 
 .recipe-source {
-	
-	margin: 5px 0px 0px 10px;
+	display: block;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	margin: 0;
+	font-style: italic;
+	font-size: 1em;
 }
 
 .recipe-img {
 	float: right;
-	max-width: 100px;
-	max-height: 100px;
+	max-width: 35%;
+	height: auto;
+}
+
+.ingredients-container {
+	display: block;
+	position: relative;
+	top: 0px;
+	height: auto;
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	overflow: hidden;
+}
+
+h4 {
+	font-size: 1.2em;
+	margin: 2vh 0 0 10px;
+}
+
+.ingredients {
+	background-color: white;
+	height: auto;
+	width: 100%;
+	margin: 0;
+	padding-left: 10px;
+	font-size: .8em;
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	overflow: auto;
 }
 
 .ingredients-list {
@@ -133,14 +213,27 @@ input[type=submit] {
 }
 
 .expand-buttons {
-	margin: 25px 0px 5px 10px;
+	position: absolute;
+	bottom: 0px;
 }
 .show-ingredients {
+	font-weight: bold;
+	color: white;
+	background-color: #afc2cb;
+	border: none;
+	width: 90px;
+	height: 22px;
 	
 }
 
 .show-health-info {
-	
+	font-weight: bold;
+	color: white;
+	background-color: #afc2cb;
+	border: none;
+	border-radius: 0 5px 0px 0px;
+	width: 90px;
+	height: 22px;
 }
 
 

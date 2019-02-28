@@ -58,22 +58,22 @@ function displayResults(responseJson) {
 		$('#results-list').append(
 			`<li>
 				<div id="search-result" class="search-result">
-					<img src="${responseJson.hits[i].recipe.image}" class="recipe-img">
-					<a href="${responseJson.hits[i].recipe.url}" class="recipe-link">${responseJson.hits[i].recipe.label}</a>
-					<br>
-					<span class="recipe-source">${responseJson.hits[i].recipe.source}</span>
+					<a href="${responseJson.hits[i].recipe.url}"><img src="${responseJson.hits[i].recipe.image}" class="recipe-img"></a>
+					<a href="${responseJson.hits[i].recipe.url}" class="recipe-label-a"><p class="recipe-label">${responseJson.hits[i].recipe.label}</p></a>
+					<p class="recipe-source">${responseJson.hits[i].recipe.source}</span>
 					
 					<div class="expand-buttons">
 						<button type="button" id="show-ingredients" class="show-ingredients" data-ingredients=${i}">Ingredients</button>
 						<button type="button" id="show-health-info" class="show-health-info" data-health-info=${i}">Health Info</button>
 					</div>
-
-					<section id="ingredients-${i}" class="hidden">
-						<h5>Ingredients</h5>
+				</div>
+				<div class="ingredients-container">
+					<section id="ingredients-${i}" class="ingredients hidden">
+						<h4>Ingredients</h4>
 						<ul id="ingredients-list" class="ingredients-list">
 							${ingredients}
 						</ul>
-					</section>	
+					</section>
 				</div>
 			</li>`
 		);
