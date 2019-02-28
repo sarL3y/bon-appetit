@@ -3,9 +3,11 @@
 }
 
 body {
+
 	font-family: 'Roboto', sans-serif;
-	background-color: #E1F5FE;
+	background-color: #f2fbff;
 	color: #01579B;
+	font-size: 14px;
 }
 
 header {
@@ -15,16 +17,15 @@ header {
 
 h1 {
 	margin: 2vh 2vw;
-	font-size: 2em;
+	font-size: 4em;
+	text-decoration: underline;
+	text-decoration-color: #ff6040;
+	font-family: 'Oswald', 'Roboto', sans-serif;
 }
 
 h2 {
 	margin: 2vh 2vw 5vh 2vw;
-	font-size: 1em;
-}
-
-button, input[type="text"] {
-	padding: 5px;
+	font-size: 1.5em;
 }
 
 button:hover {
@@ -66,11 +67,10 @@ label[for=search-term] {
 }
 
 input[type=text] {
-
-	border: 1px solid #ECEFF1;
 	border-radius: 2px;
 	width: 75%;
 	margin-top: 1vh;
+	padding: 5px;
 	font-size: 1.2em;
 }
 
@@ -85,7 +85,7 @@ input[type=text], textarea {
 
 input[type=text]:focus, textarea:focus {
 	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-	border: 1px solid #afc2cb;
+	border: 1px solid #01579B;
 }
 
 label[for=max-results] {
@@ -100,6 +100,8 @@ input[type=submit] {
 	display: block;
 	font-weight: bold;
 	color: white;
+	background: none;
+ 	border: none;
 	background-color: #01579B;
 	border-radius: 5px;
 	width: 150px;
@@ -165,7 +167,7 @@ h3 {
 .recipe-source {
 	display: block;
 	position: relative;
-	top: 10px;
+	top: 5px;
 	left: 10px;
 	margin: 0;
 	font-style: italic;
@@ -179,6 +181,19 @@ h3 {
 }
 
 .ingredients-container {
+	display: block;
+	position: relative;
+	top: 0px;
+	height: auto;
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	overflow: hidden;
+}
+
+.health-info-container {
 	display: block;
 	position: relative;
 	top: 0px;
@@ -208,21 +223,40 @@ h4 {
 	overflow: auto;
 }
 
+.health-info {
+	background-color: white;
+	height: auto;
+	width: 100%;
+	margin: 0;
+	padding-left: 10px;
+	font-size: .8em;
+	border-radius: 0px 0px 5px 5px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	overflow: auto;
+}
+
 .ingredients-list {
+	display: block;
+}
+
+.health-info-list {
 	display: block;
 }
 
 .expand-buttons {
 	position: absolute;
 	bottom: 0px;
+	width: 60%;
+	height: 20%;
 }
 .show-ingredients {
 	font-weight: bold;
 	color: white;
 	background-color: #afc2cb;
 	border: none;
-	width: 90px;
-	height: 22px;
+	padding: 0;
+	width: 45%;
+	height: 100%;
 	
 }
 
@@ -232,8 +266,9 @@ h4 {
 	background-color: #afc2cb;
 	border: none;
 	border-radius: 0 5px 0px 0px;
-	width: 90px;
-	height: 22px;
+	padding: 0;
+	width: 45%;
+	height: 100%;
 }
 
 

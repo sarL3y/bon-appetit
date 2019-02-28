@@ -46,6 +46,7 @@ function displayResults(responseJson) {
 
 	for (let i = 0; i < responseJson.hits.length; i++) {
 		let ingredients = "";
+		let healthInfo = "";
 
 		for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
 			ingredients = ingredients + `<li>
@@ -53,7 +54,18 @@ function displayResults(responseJson) {
 					<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
 				</div>
 			</li>`
+			console.log('Printing Ingredients');
 		};
+
+		for (let j = 0; j < responseJson.hits[i].recipe.healthLabels.length; j++) {
+			healthInfo = healthInfo + `<li>
+				<div class="items">
+					<p class="item">${responseJson.hits[i].recipe.healthLabels[j]}</p>
+				</div>
+			</li>`
+			console.log('Printing Diet Info');
+		};
+
 
 		$('#results-list').append(
 			`<li>
@@ -72,6 +84,14 @@ function displayResults(responseJson) {
 						<h4>Ingredients</h4>
 						<ul id="ingredients-list" class="ingredients-list">
 							${ingredients}
+						</ul>
+					</section>
+				</div>
+				<div class="health-info-container">
+					<section id="health-info-${i}" class="health-info hidden">
+						<h4>Health Info</h4>
+						<ul id="health-info-list" class="health-info-list">
+							${healthInfo}
 						</ul>
 					</section>
 				</div>
@@ -100,7 +120,16 @@ function watchShowIngredientsButton() {
 	});
 }
 
+function watchShowHealthInfoButton() {
+	$('#results-list').on('click', '#show-health-info', event => {
+		let recipeNum = $(event.currentTarget).data('health-info');
+		console.log(recipeNum);
+		$(this).find('#health-info-' + recipeNum.replace('"', '')).removeClass('hidden');
+	});
+}
+
 $(watchShowIngredientsButton);
+$(watchShowHealthInfoButton);
 $(watchSearchForm);
 console.log('app loaded');
 
