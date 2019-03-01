@@ -20,8 +20,6 @@ function getRecipes(query, limit=10) {
 	const queryString = formatQueryParams(params)
 	const url = EDAMAM_SEARCH_URL + '?' + queryString;
 
-	console.log(url);
-
 	fetch(url)
 		.then(response => {
 			if (response.ok) {
@@ -36,13 +34,10 @@ function getRecipes(query, limit=10) {
 };
 
 function displayResults(responseJson) {
-	console.log(responseJson);
 
 	$('#results-list').empty();
 	$('#js-error-message').empty();
 	$('.site-preview').addClass('hidden');
-
-	console.log('emptying list');
 
 	if (responseJson.hits.length === 0) {
 		$('#js-error-message').text(`No one wants to eat that... Try something else!`);
@@ -59,7 +54,6 @@ function displayResults(responseJson) {
 						<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
 					</div>
 				</li>`
-				console.log('Printing Ingredients');
 			};
 
 			for (let j = 0; j < responseJson.hits[i].recipe.healthLabels.length; j++) {
@@ -68,7 +62,6 @@ function displayResults(responseJson) {
 						<p class="item">${responseJson.hits[i].recipe.healthLabels[j]}</p>
 					</div>
 				</li>`
-				console.log('Printing Diet Info');
 			};
 
 			for (let j = 0; j < responseJson.hits[i].recipe.dietLabels.length; j++) {
@@ -77,7 +70,6 @@ function displayResults(responseJson) {
 						<p class="item">${responseJson.hits[i].recipe.dietLabels[j]}</p>
 					</div>
 				</li>`
-				console.log('Printing Diet Info');
 			};
 
 			$('#results-list').append(
@@ -117,7 +109,6 @@ function displayResults(responseJson) {
 	};
  
 	$('#results').removeClass('hidden');
-	console.log('showing stuff');
 };
 
 function watchSearchForm() {
@@ -143,8 +134,6 @@ function watchShowIngredientsButton() {
 		} else {
 			$(this).find('#ingredients-' + recipeNum.replace('"', '')).removeClass('hidden');
 		};
-
-		console.log(recipeNum);
 	});
 };
 
@@ -161,8 +150,6 @@ function watchShowHealthInfoButton() {
 		} else {
 			$(this).find('#health-info-' + recipeNum.replace('"', '')).removeClass('hidden');
 		};
-
-		console.log(recipeNum);
 	});
 };
 
