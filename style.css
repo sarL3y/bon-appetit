@@ -110,9 +110,7 @@ input[type=submit] {
 	font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
 	color: white;
 	background: none;
-	-webkit-background: none;
  	border: none;
- 	-webkit-background: none;
 	background-color: #01579B;
 	border-radius: 5px;
 	width: 150px;
