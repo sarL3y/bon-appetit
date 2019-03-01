@@ -14,7 +14,12 @@ header {
 	margin-top: 10vh;
 }
 
-a > h1 {
+h1 > a, h1 > a:visited, {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+h1 > a {
 	text-decoration: none;
 	-o-text-decoration: none;
 	-ms-text-decoration: none;
