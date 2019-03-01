@@ -109,6 +109,7 @@ function watchSearchForm() {
 		const searchTerm = $('#js-search-term').val();
 		const limit = $('#js-max-results').val();
 		getRecipes(searchTerm, limit);
+		$('header').css('margin-top', '3vh');
 	});
 }
 
