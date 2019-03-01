@@ -15,11 +15,7 @@ header {
 }
 
 h1 {
-	text-decoration: none;
-	-o-text-decoration: none;
-	-ms-text-decoration: none;
-	-moz-text-decoration: none;
-	-webkit-text-decoration: none;
+	display: inline;
 	text-decoration: underline;
 	-o-text-decoration: underline;
 	-ms-text-decoration: underline;
@@ -142,6 +138,7 @@ input[type=submit]:hover {
 	margin: 10px 0 0 0;
     color: red;
     font-weight: bold;
+    text-align: center;
 }
 
 
