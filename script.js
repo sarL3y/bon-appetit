@@ -2,6 +2,7 @@
 
 const EDAMAM_SEARCH_URL = 'https://api.edamam.com/search';
 
+const apiKey = config.apiKey;
 // const AMAZON_API_KEY = '';
 // const AMAZON_SEARCH_URL = '';
 
@@ -16,7 +17,7 @@ function getRecipes(query, limit=5) {
 	const params = {
 		'q': query,
 		'app_id': EDAMAM_APP_ID,
-		'app_key': EDAMAM_API_KEY,
+		'app_key': apiKey,
 		'to': limit
 	};
 

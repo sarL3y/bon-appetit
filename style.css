@@ -3,7 +3,6 @@
 }
 
 body {
-
 	font-family: 'Roboto', sans-serif;
 	background-color: #f2fbff;
 	color: #01579B;
@@ -249,6 +248,7 @@ h4 {
 	width: 60%;
 	height: 20%;
 }
+
 .show-ingredients {
 	font-weight: bold;
 	color: white;
