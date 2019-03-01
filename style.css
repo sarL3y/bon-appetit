@@ -18,7 +18,9 @@ h1 {
 	margin: 2vh 2vw;
 	font-size: 4em;
 	text-decoration: underline;
+	-webkit-text-decoration: underline;
 	text-decoration-color: #ff6040;
+	-webkit-text-decoration-color: #ff6040;
 	font-family: 'Oswald', 'Roboto', sans-serif;
 }
 
@@ -103,7 +105,9 @@ input[type=submit] {
 	font-weight: bold;
 	color: white;
 	background: none;
+	-webkit-background: none;
  	border: none;
+ 	-webkit-background: none;
 	background-color: #01579B;
 	border-radius: 5px;
 	width: 150px;
@@ -121,10 +125,6 @@ input[type=submit] {
 
 .label-hidden {
 	display: none;
-}
-
-#results {
-	
 }
 
 h3 {
