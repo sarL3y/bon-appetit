@@ -66,7 +66,6 @@ function displayResults(responseJson) {
 			console.log('Printing Diet Info');
 		};
 
-
 		$('#results-list').append(
 			`<li>
 				<div id="search-result" class="search-result">
@@ -75,13 +74,12 @@ function displayResults(responseJson) {
 					<p class="recipe-source">${responseJson.hits[i].recipe.source}</span>
 					
 					<div class="expand-buttons">
-						<button type="button" id="show-ingredients" class="show-ingredients" data-ingredients=${i}">Ingredients</button>
-						<button type="button" id="show-health-info" class="show-health-info" data-health-info=${i}">Health Info</button>
+						<button type="button" id="show-ingredients" class="show-ingredients" data-ingredients=${i}">Ingredients +</button>
+						<button type="button" id="show-health-info" class="show-health-info" data-health-info=${i}">Diet Info +</button>
 					</div>
 				</div>
 				<div class="ingredients-container">
 					<section id="ingredients-${i}" class="ingredients hidden">
-						<h4>Ingredients</h4>
 						<ul id="ingredients-list" class="ingredients-list">
 							${ingredients}
 						</ul>
@@ -89,7 +87,6 @@ function displayResults(responseJson) {
 				</div>
 				<div class="health-info-container">
 					<section id="health-info-${i}" class="health-info hidden">
-						<h4>Health Info</h4>
 						<ul id="health-info-list" class="health-info-list">
 							${healthInfo}
 						</ul>
@@ -124,6 +121,11 @@ function watchShowIngredientsButton() {
 function watchShowHealthInfoButton() {
 	$('#results-list').on('click', '#show-health-info', event => {
 		let recipeNum = $(event.currentTarget).data('health-info');
+
+		if (!$(this).find('#ingredients-' + recipeNum.replace('"', '')).hasClass('hidden')) {
+			$(this).find('#ingredients-' + recipeNum.replace('"', '')).addClass('hidden');
+		};
+
 		console.log(recipeNum);
 		$(this).find('#health-info-' + recipeNum.replace('"', '')).removeClass('hidden');
 	});

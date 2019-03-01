@@ -16,7 +16,7 @@ header {
 
 h1 {
 	margin: 2vh 2vw;
-	font-size: 4em;
+	font-size: calc(4em + 1vw);
 	text-decoration: underline;
 	-webkit-text-decoration: underline;
 	text-decoration-color: #ff6040;
@@ -26,7 +26,7 @@ h1 {
 
 h2 {
 	margin: 2vh 2vw 5vh 2vw;
-	font-size: 1.5em;
+	font-size: calc(.9em + 1vw);
 }
 
 button:hover {
@@ -103,6 +103,7 @@ input[type=number] {
 input[type=submit] {
 	display: block;
 	font-weight: bold;
+	font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
 	color: white;
 	background: none;
 	-webkit-background: none;
@@ -156,7 +157,7 @@ h3 {
 	display: block;
 	padding: 10px 0 0 10px;
 	color: #01579B;
-	font-size: 1.2em;
+	font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
 	font-weight: bold;
 }
 
@@ -180,8 +181,7 @@ h3 {
 	width: max-content;
 	width: -moz-max-content;    
 	width: -webkit-max-content;
-	font-size: .9em;
-	font-weight: bold;
+	font-size: calc(10px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
 	border-radius: 25px;
 }
 
@@ -194,7 +194,7 @@ h3 {
 .ingredients-container {
 	display: block;
 	position: relative;
-	top: 0px;
+	top: -5px;
 	height: auto;
 	width: 100%;
 	margin: 0 auto;
@@ -207,7 +207,7 @@ h3 {
 .health-info-container {
 	display: block;
 	position: relative;
-	top: 0px;
+	top: -5px;
 	height: auto;
 	width: 100%;
 	margin: 0 auto;
@@ -228,10 +228,14 @@ h4 {
 	width: 100%;
 	margin: 0;
 	padding-left: 10px;
-	font-size: .8em;
 	border-radius: 0px 0px 5px 5px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	overflow: auto;
+}
+
+.items > p {
+	font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
+	padding-top: 5px;
 }
 
 .health-info {
@@ -240,7 +244,6 @@ h4 {
 	width: 100%;
 	margin: 0;
 	padding-left: 10px;
-	font-size: .8em;
 	border-radius: 0px 0px 5px 5px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	overflow: auto;
@@ -262,9 +265,10 @@ h4 {
 }
 
 .show-ingredients {
-	font-weight: bold;
-	color: white;
-	background-color: #afc2cb;
+	
+	font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
+	color: #01579B;
+	background-color: white;
 	border: none;
 	padding: 0;
 	width: 45%;
@@ -273,9 +277,10 @@ h4 {
 }
 
 .show-health-info {
-	font-weight: bold;
-	color: white;
-	background-color: #afc2cb;
+	
+	font-size: calc(12px + (22 - 12) * ((100vw - 300px) / (1600 - 300)));
+	background-color: white;
+	color: #01579B;
 	border: none;
 	border-radius: 0 5px 0px 0px;
 	padding: 0;
