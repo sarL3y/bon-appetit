@@ -14,7 +14,7 @@ header {
 	margin-top: 10vh;
 }
 
-h1 > a {
+a > h1 {
 	text-decoration: none;
 	-o-text-decoration: none;
 	-ms-text-decoration: none;
