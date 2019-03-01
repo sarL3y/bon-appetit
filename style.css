@@ -14,29 +14,41 @@ header {
 	margin-top: 10vh;
 }
 
-h1 {
-	margin: 2vh 2vw;
-	font-size: calc(4em + 1vw);
+h1 > a {
+	text-decoration: none;
+	-o-text-decoration: none;
+	-ms-text-decoration: none;
+	-moz-text-decoration: none;
+	-webkit-text-decoration: none;
 	text-decoration: underline;
 	-webkit-text-decoration: underline;
 	text-decoration-color: #ff6040;
 	-webkit-text-decoration-color: #ff6040;
+	color: #01579B;
+}
+
+h1 {
+	margin: 2vh 2vw;
+	font-size: calc(38px + (70 - 38) * ((100vw - 300px) / (1600 - 300)));
+	text-decoration: underline;
+	-webkit-text-decoration: underline;
+	text-decoration-color: #ff6040;
+	-webkit-text-decoration-color: #ff6040;
+	color: #01579B;
 	font-family: 'Oswald', 'Roboto', sans-serif;
+}
+
+h1 > a:hover {
+	cursor: pointer;
 }
 
 h2 {
 	margin: 2vh 2vw 5vh 2vw;
-	font-size: calc(.9em + 1vw);
+	font-size: calc(20px + (26 - 20) * ((100vw - 300px) / (1600 - 300)));
 }
 
-button:hover {
-	cursor: pointer;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+header > p {
+	font-size: calc(12px + (16 - 12) * ((100vw - 300px) / (1600 - 300)));
 }
 
 .container {
@@ -46,7 +58,12 @@ ul {
 	margin: 0 auto;
 }
 
+
+/* SEARCH FORM */
+
 .search-form {
+	-o-appearance: none;
+	-ms-appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	display: block;
@@ -66,6 +83,8 @@ label > input {
 }
 
 input[type=text] {
+	-o-appearance: none;
+	-ms-appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	background-color: white;
@@ -74,29 +93,26 @@ input[type=text] {
 	margin-top: 1vh;
 	padding: 5px;
 	font-size: 1.2em;
-
 }
 
 input[type=text], textarea {
-	background-color: white;
-	-webkit-transition: all 0.30s ease-in-out;
-	-moz-transition: all 0.30s ease-in-out;
-	-ms-transition: all 0.30s ease-in-out;
 	-o-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-webkit-transition: all 0.30s ease-in-out;
+	background-color: white;
 	outline: none;
 	border: 1px solid #DDDDDD;
 }
 
 input[type=text]:focus, textarea:focus {
-	border: 1px solid #01579B;
 	background-color: white;
-}
-
-input[type=submit]:focus {
-	border: none;
+	border: 1px solid #01579B;
 }
 
 input[type=submit] {
+	-o-appearance: none;
+	-ms-appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	display: block;
@@ -112,18 +128,39 @@ input[type=submit] {
 	margin: 3vh auto 1vh auto;
 }
 
+input[type=submit]:focus {
+	border: none;
+}
+
+input[type=submit]:hover {
+	cursor: pointer;
+}
+
+.label-hidden {
+	display: none;
+}
+
 .error-message {
 	margin: 10px 0 0 0;
     color: red;
     font-weight: bold;
 }
 
+
+/* SEARCH RESULTS */
+
 .hidden {
 	display: none;
 }
 
-.label-hidden {
-	display: none;
+a:hover {
+	cursor: pointer;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 h3 {
@@ -143,7 +180,6 @@ h3 {
 	border-radius: 5px;
 	box-shadow: 0 3px 3px rgba(0,0,0,0.16), 0 3px 3px rgba(0,0,0,0.16);
 	overflow: hidden;
-
 }
 
 .search-result > a {
@@ -188,6 +224,9 @@ h3 {
 	height: auto;
 }
 
+
+/* EXPANDABLE WINDOWS */
+
 .ingredients-container, .health-info-container {
 	display: block;
 	position: relative;
@@ -201,17 +240,17 @@ h3 {
 	overflow: hidden;
 }
 
-h4 {
-	font-size: 1.2em;
-	margin: 2vh 0 0 10px;
+
+.ingredients-list, .health-info-list {
+	display: block;
 }
 
-.ingredients {
+.ingredients, .health-info, .diet-info {
 	background-color: white;
 	height: auto;
 	width: 100%;
 	margin: 0;
-	padding-left: 10px;
+	padding-left: 15px;
 	border-radius: 0px 0px 5px 5px;
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	overflow: auto;
@@ -222,25 +261,6 @@ h4 {
 	padding-top: 5px;
 }
 
-.health-info {
-	background-color: white;
-	height: auto;
-	width: 100%;
-	margin: 0;
-	padding-left: 10px;
-	border-radius: 0px 0px 5px 5px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-	overflow: auto;
-}
-
-.ingredients-list {
-	display: block;
-}
-
-.health-info-list {
-	display: block;
-}
-
 .expand-buttons {
 	position: absolute;
 	bottom: 0px;
@@ -248,16 +268,20 @@ h4 {
 	height: 20%;
 }
 
+button:hover {
+	cursor: pointer;
+}
+
+button:focus {
+	outline: none;
+}
+
 .show-ingredients, .show-health-info {
-	
 	font-size: calc(12px + (20 - 12) * ((100vw - 300px) / (1600 - 300)));
 	color: #01579B;
 	background-color: white;
 	border: none;
-	padding: 0;
+	padding: 1%;
 	width: 45%;
 	height: 100%;
-	
 }
-
-
