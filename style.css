@@ -68,14 +68,17 @@ label[for=search-term] {
 }
 
 input[type=text] {
+	background-color: white;
 	border-radius: 2px;
 	width: 80%;
 	margin-top: 1vh;
 	padding: 5px;
 	font-size: 1.2em;
+
 }
 
 input[type=text], textarea {
+	background-color: white;
 	-webkit-transition: all 0.30s ease-in-out;
 	-moz-transition: all 0.30s ease-in-out;
 	-ms-transition: all 0.30s ease-in-out;
@@ -86,6 +89,7 @@ input[type=text], textarea {
 
 input[type=text]:focus, textarea:focus {
 	border: 1px solid #01579B;
+	background-color: white;
 }
 
 input[type=submit]:focus {
@@ -117,7 +121,9 @@ input[type=submit] {
 }
 
 .error-message {
+	margin: 10px 0 0 0;
     color: red;
+    font-weight: bold;
 }
 
 .hidden {
@@ -157,7 +163,7 @@ h3 {
 	display: block;
 	padding: 10px 0 0 10px;
 	color: #01579B;
-	font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
+	font-size: calc(14px + (22 - 14) * ((100vw - 300px) / (1600 - 300)));
 	font-weight: bold;
 }
 
@@ -181,7 +187,7 @@ h3 {
 	width: max-content;
 	width: -moz-max-content;    
 	width: -webkit-max-content;
-	font-size: calc(10px + (18 - 10) * ((100vw - 300px) / (1600 - 300)));
+	font-size: calc(10px + (16 - 10) * ((100vw - 300px) / (1600 - 300)));
 	border-radius: 25px;
 }
 

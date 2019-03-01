@@ -12,7 +12,7 @@ function formatQueryParams(params) {
 	return queryItems.join('&');
 }
 
-function getRecipes(query, limit=5) {
+function getRecipes(query, limit=10) {
 	const params = {
 		'q': query,
 		'app_id': EDAMAM_APP_ID,
@@ -42,58 +42,64 @@ function displayResults(responseJson) {
 	console.log(responseJson);
 
 	$('#results-list').empty();
+	$('#js-error-message').empty();
 	console.log('emptying list');
 
-	for (let i = 0; i < responseJson.hits.length; i++) {
-		let ingredients = "";
-		let healthInfo = "";
+	if (responseJson.hits.length === 0) {
+		$('#js-error-message').text(`No one wants to eat that... Try something else!`);
 
-		for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
-			ingredients = ingredients + `<li>
-				<div class="items">
-					<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
-				</div>
-			</li>`
-			console.log('Printing Ingredients');
-		};
+	} else {
+		for (let i = 0; i < responseJson.hits.length; i++) {
+			let ingredients = "";
+			let healthInfo = "";
 
-		for (let j = 0; j < responseJson.hits[i].recipe.healthLabels.length; j++) {
-			healthInfo = healthInfo + `<li>
-				<div class="items">
-					<p class="item">${responseJson.hits[i].recipe.healthLabels[j]}</p>
-				</div>
-			</li>`
-			console.log('Printing Diet Info');
-		};
-
-		$('#results-list').append(
-			`<li>
-				<div id="search-result" class="search-result">
-					<a href="${responseJson.hits[i].recipe.url}"><img src="${responseJson.hits[i].recipe.image}" class="recipe-img"></a>
-					<a href="${responseJson.hits[i].recipe.url}" class="recipe-label-a"><p class="recipe-label">${responseJson.hits[i].recipe.label}</p></a>
-					<p class="recipe-source">${responseJson.hits[i].recipe.source}</span>
-					
-					<div class="expand-buttons">
-						<button type="button" id="show-ingredients" class="show-ingredients" data-ingredients=${i}">Ingredients +</button>
-						<button type="button" id="show-health-info" class="show-health-info" data-health-info=${i}">Diet Info +</button>
+			for (let j = 0; j < responseJson.hits[i].recipe.ingredientLines.length; j++) {
+				ingredients = ingredients + `<li>
+					<div class="items">
+						<p class="item">${responseJson.hits[i].recipe.ingredientLines[j]}</p>
 					</div>
-				</div>
-				<div class="ingredients-container">
-					<section id="ingredients-${i}" class="ingredients hidden">
-						<ul id="ingredients-list" class="ingredients-list">
-							${ingredients}
-						</ul>
-					</section>
-				</div>
-				<div class="health-info-container">
-					<section id="health-info-${i}" class="health-info hidden">
-						<ul id="health-info-list" class="health-info-list">
-							${healthInfo}
-						</ul>
-					</section>
-				</div>
-			</li>`
-		);
+				</li>`
+				console.log('Printing Ingredients');
+			};
+
+			for (let j = 0; j < responseJson.hits[i].recipe.healthLabels.length; j++) {
+				healthInfo = healthInfo + `<li>
+					<div class="items">
+						<p class="item">${responseJson.hits[i].recipe.healthLabels[j]}</p>
+					</div>
+				</li>`
+				console.log('Printing Diet Info');
+			};
+
+			$('#results-list').append(
+				`<li>
+					<div id="search-result" class="search-result">
+						<a href="${responseJson.hits[i].recipe.url}"><img src="${responseJson.hits[i].recipe.image}" class="recipe-img"></a>
+						<a href="${responseJson.hits[i].recipe.url}" class="recipe-label-a"><p class="recipe-label">${responseJson.hits[i].recipe.label}</p></a>
+						<p class="recipe-source">${responseJson.hits[i].recipe.source}</span>
+						
+						<div class="expand-buttons">
+							<button type="button" id="show-ingredients" class="show-ingredients" data-ingredients=${i}">Ingredients +</button>
+							<button type="button" id="show-health-info" class="show-health-info" data-health-info=${i}">Diet Info +</button>
+						</div>
+					</div>
+					<div class="ingredients-container">
+						<section id="ingredients-${i}" class="ingredients hidden">
+							<ul id="ingredients-list" class="ingredients-list">
+								${ingredients}
+							</ul>
+						</section>
+					</div>
+					<div class="health-info-container">
+						<section id="health-info-${i}" class="health-info hidden">
+							<ul id="health-info-list" class="health-info-list">
+								${healthInfo}
+							</ul>
+						</section>
+					</div>
+				</li>`
+			);
+		};
 	};
  
 	$('#results').removeClass('hidden');
@@ -113,8 +119,18 @@ function watchSearchForm() {
 function watchShowIngredientsButton() {
 	$('#results-list').on('click', '#show-ingredients', event => {
 		let recipeNum = $(event.currentTarget).data('ingredients');
+
+		if (!$(this).find('#health-info-' + recipeNum.replace('"', '')).hasClass('hidden')) {
+			$(this).find('#health-info-' + recipeNum.replace('"', '')).addClass('hidden');
+		};
+		
+		if (!$(this).find('#ingredients-' + recipeNum.replace('"', '')).hasClass('hidden')) {
+			$(this).find('#ingredients-' + recipeNum.replace('"', '')).addClass('hidden');
+		} else {
+			$(this).find('#ingredients-' + recipeNum.replace('"', '')).removeClass('hidden');
+		};
+
 		console.log(recipeNum);
-		$(this).find('#ingredients-' + recipeNum.replace('"', '')).removeClass('hidden');
 	});
 }
 
@@ -126,8 +142,13 @@ function watchShowHealthInfoButton() {
 			$(this).find('#ingredients-' + recipeNum.replace('"', '')).addClass('hidden');
 		};
 
+		if (!$(this).find('#health-info-' + recipeNum.replace('"', '')).hasClass('hidden')) {
+			$(this).find('#health-info-' + recipeNum.replace('"', '')).addClass('hidden');
+		} else {
+			$(this).find('#health-info-' + recipeNum.replace('"', '')).removeClass('hidden');
+		};
+
 		console.log(recipeNum);
-		$(this).find('#health-info-' + recipeNum.replace('"', '')).removeClass('hidden');
 	});
 }
 
