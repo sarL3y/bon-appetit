@@ -23,13 +23,15 @@ function getRecipes(query, limit=10) {
 	fetch(url)
 		.then(response => {
 			if (response.ok) {
-			return response.json();
+				return response.json();
 			}
+
 			throw new Error(response.statusText);
 		})
 		.then(responseJson => displayResults(responseJson))
 		.catch(err => {
-			$('#js-error-message').text(`Something went wrong: ${err.message}`);
+			console.log(err);
+			$('#js-error-message').text(`Search limit exceeded: 5 searches per minute. ${err.message}.`);
 		});
 };
 
