@@ -77,8 +77,8 @@ function displayResults(responseJson) {
 			$('#results-list').append(
 				`<li role="listitem">
 					<div id="search-result" class="search-result">
-						<a href="${responseJson.hits[i].recipe.url}" role="link"><img src="${responseJson.hits[i].recipe.image}" class="recipe-img" alt="Image of recipe"></a>
-						<a href="${responseJson.hits[i].recipe.url}" role="link" class="recipe-label-a"><p class="recipe-label">${responseJson.hits[i].recipe.label}</p></a>
+						<a href="${responseJson.hits[i].recipe.url}" target="_blank" role="link"><img src="${responseJson.hits[i].recipe.image}" class="recipe-img" alt="Image of recipe"></a>
+						<a href="${responseJson.hits[i].recipe.url}" target="_blank" role="link" class="recipe-label-a"><p class="recipe-label">${responseJson.hits[i].recipe.label}</p></a>
 
 						<p class="recipe-source">${responseJson.hits[i].recipe.source}</p>
 						
