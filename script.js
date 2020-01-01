@@ -12,8 +12,8 @@ function formatQueryParams(params) {
 function getRecipes(query, limit=10) {
 	const params = {
 		'q': query,
-		'app_id': process.env.EDAMAM_APP_ID,
-		'app_key': process.env.EDAMAM_API_KEY,
+		'app_id': EDAMAM_APP_ID,
+		'app_key': EDAMAM_API_KEY,
 		'to': limit
 	};
 
