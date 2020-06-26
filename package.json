@@ -1,0 +1,28 @@
+{
+  "name": "bon-appetit",
+  "version": "1.0.0",
+  "description": "<a href=\"https://sarl3y.github.io/bon-appetit/\">Bon Appetit - Live Site</a><br> <br> <h3>Search recipes based off a user-provided list of ingredients.</h3><br> <br> <a href=\"https://imgur.com/e0IyzEs\"><img src=\"https://i.imgur.com/e0IyzEs.png\" title=\"source: imgur.com\" /></a><br> <br> <p>See what else is needed to complete the recipe, view dietary information, link to recipe from source.</p><br> <br> <h4>Coded in HTML/CSS/JavaScript/jQuery</h4>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarL3y/bon-appetit.git"
+  },
+  "author": "sarL3y",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarL3y/bon-appetit/issues"
+  },
+  "homepage": "https://github.com/sarL3y/bon-appetit#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
